@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ua">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <main id="main">
+      <form id="form" action="" onsubmit=";return false">
+        <div class="input-group">
+          <div class="input_div">
+            <label for="surname">Фамилия</label>
+            <input
+              class="input"
+              required
+              type="text"
+              placeholder="Фамилия"
+              id="surname"
+              pattern="[А-Яа-яЁёІіЇїЄє]{2,20}"
+              tabindex="1"
+            />
+            <input
+              class="input"
+              required
+              type="text"
+              placeholder="Surname"
+              id="surname-e"
+              pattern="[A-Za-z]{2,20}"
+              tabindex="1"
+            />
+          </div>
+          <div class="input_div">
+            <label for="name">Имя</label>
+            <input
+              class="input"
+              required
+              type="text"
+              placeholder="Имя"
+              id="name"
+              pattern="[А-Яа-яЁёІіЇїЄє]{2,20}"
+              tabindex="2"
+            />
+            <input
+              class="input"
+              required
+              type="text"
+              placeholder="Name"
+              id="name-e"
+              pattern="[A-Za-z]{2,20}"
+              tabindex="2"
+            />
+          </div>
+
+          <div class="input_div">
+            <label for="patromyc">Отчество</label>
+            <input
+              class="input"
+              required
+              type="text"
+              placeholder="Отчество"
+              id="patromyc"
+              pattern="[А-Яа-яЁёІіЇїЄє]{2,20}"
+              tabindex="3"
+            />
+          </div>
+        </div>
+
+        <div class="input-group sex">
+          <p>Пол</p>
+
+          <select name="sex" tabindex="4">
+            <option value="Ч/M" selected>Мужской</option>
+            <option value="Ж/F">Женский</option>
+          </select>
+        </div>
+
+        <div class="input-group date">
+          <div class="input_div">
+            <label for="date_of_birth">Дата рожения</label>
+            <input
+              class="input"
+              required
+              type="date"
+              placeholder="Дата рожения"
+              id="date_of_birth"
+              tabindex="5"
+            />
+          </div>
+
+          <div class="input_div">
+            <label for="photo_send">Загрузите фото</label>
+            <input
+              type="file"
+              name="photo_send"
+              id="photo_send"
+              accept="image/jpeg,image/png,image/gif"
+            />
+          </div>
+        </div>
+        <button type="submit" id="button_send" tabindex="10">Отправить</button>
+      </form>
+
+      <canvas width="500" height="316" id="canvas_1"></canvas>
+      <canvas width="500" height="316" id="canvas_2"></canvas>
+
+      <div id="convert"></div>
+    </main>
+    <script src="./scripts/script_2.js"></script>
+  </body>
+</html>
