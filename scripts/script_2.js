@@ -1,7 +1,20 @@
 window.onload = function () {
+    alert("Привет, я разработчик данного проекта! Прошу, прочитай весь этот текст! Для использования сайта вы должны ввести данные и загрузить фото, сайт был создан в целях создания шуточной id-паспорта гражданина Украины. Для лучшего эффекта загружайте фото формата 3/4, и вводите реалистичные данные. Этот сайт не отправляет ваши данные, так как у сайта нет сервера, и это не соответствует политике конфиденциальности.");
+
+    let questionResult = confirm("Используя возможностями сайта вы даёте согласие, что автор/владелец сайта не несёт ответственности за ваше дальнейшие действия. Использование поддельных документов в корыстных целях карается законом. Если вы соглашаетесь, то нажмите кнопку 'Ок', иначе страница обновиться.");
+
+    if (questionResult == false){
+            location.reload(); 
+    }
 
 const button = document.getElementById("button_send");
 const inputs = document.querySelectorAll('input, select');
+
+let form = document.getElementById("form");
+let canvasConteiner = document.getElementById("canvasItem");
+
+let navBtn_1 = document.getElementById("nav_item-1");
+let navBtn_2 = document.getElementById("nav_item-2")
 
 let allData = [];
 
@@ -24,6 +37,8 @@ let str_3;
 let valid;
 let tempUser = [];
 
+let compiled = false;
+
 function User(surname,surname_e , name, name_e, patromyc, sex, date_of_birth, record, date_of_expiry,  document) {
     this.surname = surname;
     this.surname_e = surname_e;
@@ -42,30 +57,28 @@ function validate() {
   for (let i = 0; i < inputs.length; i++) {
     if (inputs[i].value === "") {
        valid = false;
-    //    if (inputs[i].type == "file" && portofoleFrontPhoto.style.backgroundImage !== null && portofoleBackPhoto.style.backgroundImage !== null){
-    //     valid = true; 
-    //    };
     } 
  
   }
   if (valid == true){
     createUser();
 } else {
-    alert("Try one more time");
+    alert("Заполните все данные");
 }
 
 }
 
 function createUser(){
    tempUser = new User;
-    allData[0] = inputs[0].value;
-    allData[1] = inputs[1].value;
-    allData[2] = inputs[2].value;
-    allData[3] = inputs[3].value;
-    allData[4] = inputs[4].value;
-    allData[5] = inputs[5].value;
 
-     birthday_value = inputs[6].value;
+    allData[0] = inputs[0].value;
+    allData[1] = translit(allData[0]);
+    allData[2] = inputs[1].value;
+    allData[3] = translit(allData[2]);
+    allData[4] = inputs[2].value;
+    allData[5] = inputs[3].value;
+
+     birthday_value = inputs[4].value;
      day = Number(birthday_value.slice(8));
      mouth = Number(birthday_value.slice(5,7));
      year = Number(birthday_value.slice(0,4));
@@ -138,6 +151,37 @@ function createUser(){
 }
 }
 
+function translit(word){
+	var answer = '';
+	var converter = {
+		'а': 'a',    'б': 'b',    'в': 'v',    'г': 'g',    'д': 'd',
+		'е': 'e',    'ё': 'e',    'ж': 'zh',   'з': 'z',    'и': 'i',
+		'й': 'y',    'к': 'k',    'л': 'l',    'м': 'm',    'н': 'n',
+		'о': 'o',    'п': 'p',    'р': 'r',    'с': 's',    'т': 't',
+		'у': 'u',    'ф': 'f',    'х': 'h',    'ц': 'c',    'ч': 'ch',
+		'ш': 'sh',   'щ': 'sch',  'ь': '',     'ы': 'y',    'ъ': '',
+		'э': 'e',    'ю': 'yu',   'я': 'ya',
+ 
+		'А': 'A',    'Б': 'B',    'В': 'V',    'Г': 'G',    'Д': 'D',
+		'Е': 'E',    'Ё': 'E',    'Ж': 'Zh',   'З': 'Z',    'И': 'I',
+		'Й': 'Y',    'К': 'K',    'Л': 'L',    'М': 'M',    'Н': 'N',
+		'О': 'O',    'П': 'P',    'Р': 'R',    'С': 'S',    'Т': 'T',
+		'У': 'U',    'Ф': 'F',    'Х': 'H',    'Ц': 'C',    'Ч': 'Ch',
+		'Ш': 'Sh',   'Щ': 'Sch',  'Ь': '',     'Ы': 'Y',    'Ъ': '',
+		'Э': 'E',    'Ю': 'Yu',   'Я': 'Ya'
+	};
+ 
+	for (var i = 0; i < word.length; ++i ) {
+		if (converter[word[i]] == undefined){
+			answer += word[i];
+		} else {
+			answer += converter[word[i]];
+		}
+	}
+ 
+	return answer;
+}
+
 function fillCanvas() {
     let cvs_1 = document.getElementById("canvas_1");
     let ctx_1 = cvs_1.getContext('2d');
@@ -189,7 +233,9 @@ function fillCanvas() {
     function drawImage(){   
 
         reColor(portofolePhoto, cvs_1, ctx_1 ,25 , 75, 162, 232);
+   
         ctx_1.drawImage(frontImg, 0, 0 , 500, 316);
+  
         ctx_1.drawImage(signaturePhoto, 250, 275 , 50, 36);
 
         reColor(portofolePhoto, cvs_2, ctx_2, 405, 38 , 59, 90);
@@ -210,13 +256,16 @@ function fillCanvas() {
         ctx_1.fillText(allData[6], 217,240);
         ctx_1.fillText(allData[7], 348,240);
         ctx_1.fillText(allData[8], 217,271);
+        ctx_1.font = '900 16px Arial';
         ctx_1.fillText(allData[9], 348,271);
 
         ctx_2.font = " 16px Arial";
         ctx_2.fillStyle = "#000000b3";
         ctx_2.fillText(day + " " + mouth + " " + issue_year, 34, 59);
         ctx_2.fillText("23497812690", 34, 92);
+        ctx_2.font = '900 16px Arial';
         ctx_2.fillText("1444", 257, 59);
+        ctx_2.font = '300 16px Arial';
         ctx_2.font = " 11px Arial";
         ctx_2.fillText("М ДОНЕЦЬК ДОНЕЦЬКА ОБЛАСТЬ УКРАИНА/M DONETSK", 34, 122);
         ctx_2.fillText("DONETTSKA OBLAST UKRAINA/UKR", 34, 135);
@@ -224,17 +273,60 @@ function fillCanvas() {
         ctx_2.textAlign = 'center';
         ctx_2.fillText(allData[0] + " " + allData[2] + " " + allData[1] + " " + allData[3] + " " + allData[7], 250, 185);
 
-        ctx_2.font = " 20px Arial";
-        
-        ctx_2.fillText(str_1, 250,235, 340);
-        ctx_2.fillText(str_2, 250,255, 340);
-        ctx_2.fillText(str_3, 250,275, 340);
+        ctx_2.font = "100 20px Arial";
+        ctx_2.textAlign = 'center';
+        ctx_2.scale(1.3, 1)
+        ctx_2.fillText(str_1, 192,235, 340);
+        ctx_2.fillText(str_2, 192,255, 340);
+        ctx_2.fillText(str_3, 192,275, 340);
 
         cvs_1.style.display = "block";
         cvs_2.style.display = "block";
 
+        compiled = true;
+
+        showItem();
     }
 
+}
+function showItem(){
+
+    form.classList.remove("active");
+    canvasConteiner.classList.add("active");
+    navBtn_1.classList.remove("active");
+    navBtn_2.classList.add("active");
+
+
+}
+
+navBtn_1.addEventListener("click", changeItem1);
+
+
+
+navBtn_2.addEventListener("click",changeItem2);
+
+
+function changeItem1(){
+   
+    navBtn_1.classList.add("active");
+    navBtn_2.classList.remove("active");
+
+    form.classList.add("active");
+    canvasConteiner.classList.remove("active");
+}
+
+
+function changeItem2(){
+    if (compiled == true){
+        navBtn_2.classList.add("active");
+        navBtn_1.classList.remove("active");
+    
+        form.classList.remove("active");
+        canvasConteiner.classList.add("active"); 
+    } else {
+         alert("Сначала введите данные.");
+    }
+    
 }
 
 
@@ -254,9 +346,6 @@ document.getElementById('photo_send').onchange = function (evt) {
     else {
     }
 }
-
-
-
 
 button.addEventListener("click", validate);
 }
