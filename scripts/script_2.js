@@ -10,15 +10,20 @@ window.onload = function () {
 const button = document.getElementById("button_send");
 const inputs = document.querySelectorAll('input, select');
 
-let form = document.getElementById("form");
+let main = document.getElementById("main");
 let canvasConteiner = document.getElementById("canvasItem");
 
 let navBtn_1 = document.getElementById("nav_item-1");
 let navBtn_2 = document.getElementById("nav_item-2")
 
+let croppedImageDataURL
+
 let allData = [];
 
 let portofolePhotoSrc;
+
+let photoInput = document.getElementById("photo_send");
+
 
 let birthday_value;
 let day; 
@@ -51,6 +56,48 @@ function User(surname,surname_e , name, name_e, patromyc, sex, date_of_birth, re
     this.date_of_expiry = date_of_expiry;
     this.document = document;
   }
+
+function reSize(){
+    let canvas  = $("#canvas"),
+    context = canvas.get(0).getContext("2d");
+    let resizeBlock = $("#resizeBlock");
+    resizeBlock.addClass("active");
+
+
+    if (this.files && this.files[0]) {
+      if ( this.files[0].type.match(/^image\//) ) {
+        let reader = new FileReader();
+        reader.onload = function(evt) {
+           let img = new Image();
+           img.onload = function() {
+             context.canvas.height = img.height;
+             context.canvas.width  = img.width;
+             context.drawImage(img, 0, 0);
+      
+             let cropper = canvas.cropper({
+               aspectRatio: 7 / 9
+             });
+             $('#btnCrop').click(function() {
+                croppedImageDataURL = canvas.cropper('getCroppedCanvas').toDataURL("image/png"); 
+                resizeBlock.removeClass("active")
+                button.classList.add("active");
+
+             });
+
+           };
+           img.src = evt.target.result;
+				};
+        reader.readAsDataURL(this.files[0]);
+      }
+      else {
+        alert("Invalid file type! Please select an image file.");
+      }
+    }
+    else {
+      alert('No file(s) selected.');
+    }
+}
+
 
 function validate() {
   valid = true;
@@ -145,15 +192,14 @@ function createUser(){
     str_2 = str_2.slice(0,29) + "6";
     while (str_3.length < 30) {
         str_3 = str_3 + "<" ;
-
   fillCanvas();
   
 }
 }
 
 function translit(word){
-	var answer = '';
-	var converter = {
+	let answer = '';
+	let converter = {
 		'а': 'a',    'б': 'b',    'в': 'v',    'г': 'g',    'д': 'd',
 		'е': 'e',    'ё': 'e',    'ж': 'zh',   'з': 'z',    'и': 'i',
 		'й': 'y',    'к': 'k',    'л': 'l',    'м': 'm',    'н': 'n',
@@ -171,7 +217,7 @@ function translit(word){
 		'Э': 'E',    'Ю': 'Yu',   'Я': 'Ya'
 	};
  
-	for (var i = 0; i < word.length; ++i ) {
+	for (let i = 0; i < word.length; ++i ) {
 		if (converter[word[i]] == undefined){
 			answer += word[i];
 		} else {
@@ -192,9 +238,29 @@ function fillCanvas() {
     let backImg = new Image();
     let signaturePhoto = new Image();
     let portofolePhoto = new Image();
-   
 
-    portofolePhoto.src = portofolePhotoSrc;
+    // reSize();
+
+
+        
+    // $(function () { 
+    //     canvas = document.getElementById('canvas_1');
+    //     canvas.onmousemove = mousePos;
+    //      });
+        
+        // function mousePos(e) {
+        //     if (e.offsetX) {
+        //         mouseX = e.offsetX;
+        //         mouseY = e.offsetY;
+        //     }
+        //     else if (e.layerX) {
+        //         mouseX = e.layerX;
+        //         mouseY = e.layerY;
+        //     }
+        //     console.log(mouseX, ".......", mouseY)
+        // }
+
+    portofolePhoto.src = croppedImageDataURL;
     signaturePhoto.src = `./images/signature/current.png`;
     frontImg.src = "./images/front.png";
     backImg.src = "./images/back.png";
@@ -202,28 +268,33 @@ function fillCanvas() {
 
     backImg.onload = drawImage;
 
-    function reColor(imgObj, cvs, ctx , im_x, im_y, im_w, im_h){
+    function reColor(imgObj, cvs, ctx , im_x, im_y, im_w, im_h, imgW, imgH){
         
      
-            var imgW = imgObj.width;  
-            var imgH = imgObj.height;  
+            // let imgW = imgObj.width;  
+            // console.log(cvs,"  ", imgW);
+            // let imgH = imgObj.height;  
+            // console.log(cvs,"  ", imgH);
+
+
             cvs.width = 500;  
             cvs.height = 316;  
      
             ctx.drawImage(imgObj, im_x, im_y,im_w,im_h);  
-            var imgPixels = ctx.getImageData(0, 0, imgW, imgH);  
+            let imgPixels = ctx.getImageData(0, 0, imgW, imgH);  
 
                 
-            for(var y = 0; y < imgPixels.height; y++){  
-                for(var x = 0; x < imgPixels.width; x++){  
-                    var i = (y * 4) * imgPixels.width + x * 4;  
-                    var avg = (imgPixels.data[i] + imgPixels.data[i + 1] + imgPixels.data[i + 2]) / 3;  
+            for(let y = 0; y < imgPixels.height; y++){  
+                for(let x = 0; x < imgPixels.width; x++){  
+                    let i = (y * 4) * imgPixels.width + x * 4;  
+                    let avg = (imgPixels.data[i] + imgPixels.data[i + 1] + imgPixels.data[i + 2]) / 3;  
                     imgPixels.data[i] = avg;   
                     imgPixels.data[i + 1] = avg;   
                     imgPixels.data[i + 2] = avg;  
                 }  
             }  
             ctx.putImageData(imgPixels, 0, 0, 0, 0, imgPixels.width, imgPixels.height);  
+            // console.log(cvs);
             return cvs.toDataURL();  
             
             
@@ -231,14 +302,15 @@ function fillCanvas() {
     }
 
     function drawImage(){   
+        
 
-        reColor(portofolePhoto, cvs_1, ctx_1 ,25 , 75, 162, 232);
-   
+
+        reColor(portofolePhoto, cvs_1, ctx_1 ,30 , 87,  159, 204 ,500, 316);
+
         ctx_1.drawImage(frontImg, 0, 0 , 500, 316);
-  
         ctx_1.drawImage(signaturePhoto, 250, 275 , 50, 36);
 
-        reColor(portofolePhoto, cvs_2, ctx_2, 405, 38 , 59, 90);
+        reColor(portofolePhoto, cvs_2, ctx_2, 400, 38 , 63, 91, 500, 316);
         ctx_2.drawImage(backImg, 0, 0 , 500, 316);
 
         fillText();
@@ -291,61 +363,40 @@ function fillCanvas() {
 }
 function showItem(){
 
-    form.classList.remove("active");
+    main.classList.remove("active");
     canvasConteiner.classList.add("active");
     navBtn_1.classList.remove("active");
     navBtn_2.classList.add("active");
 
 
 }
-
-navBtn_1.addEventListener("click", changeItem1);
-
-
-
-navBtn_2.addEventListener("click",changeItem2);
-
-
 function changeItem1(){
    
     navBtn_1.classList.add("active");
     navBtn_2.classList.remove("active");
 
-    form.classList.add("active");
+    main.classList.add("active");
     canvasConteiner.classList.remove("active");
 }
-
-
 function changeItem2(){
     if (compiled == true){
         navBtn_2.classList.add("active");
         navBtn_1.classList.remove("active");
     
-        form.classList.remove("active");
+        main.classList.remove("active");
         canvasConteiner.classList.add("active"); 
     } else {
          alert("Сначала введите данные.");
     }
     
 }
+navBtn_1.addEventListener("click", changeItem1);
+navBtn_2.addEventListener("click",changeItem2);
 
-
-document.getElementById('photo_send').onchange = function (evt) {
- 
-    let tgt = evt.target || window.event.srcElement,
-        files = tgt.files;
-
-    if (FileReader && files && files.length) {
-        let fr = new FileReader();
-        fr.onload = function () {
-
-            portofolePhotoSrc = fr.result;
-        }
-        fr.readAsDataURL(files[0]);
-    }
-    else {
-    }
-}
-
+photoInput.addEventListener("change", reSize);
 button.addEventListener("click", validate);
+
+
+
+
 }
