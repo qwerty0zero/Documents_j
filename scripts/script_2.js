@@ -90,11 +90,11 @@ function reSize(){
         reader.readAsDataURL(this.files[0]);
       }
       else {
-        alert("Invalid file type! Please select an image file.");
+        alert("Вы выбрали другой тип файлов, пожалуйста загрузите картинку");
       }
     }
     else {
-      alert('No file(s) selected.');
+      alert('Файл не загружен');
     }
 }
 
@@ -239,27 +239,6 @@ function fillCanvas() {
     let signaturePhoto = new Image();
     let portofolePhoto = new Image();
 
-    // reSize();
-
-
-        
-    // $(function () { 
-    //     canvas = document.getElementById('canvas_1');
-    //     canvas.onmousemove = mousePos;
-    //      });
-        
-        // function mousePos(e) {
-        //     if (e.offsetX) {
-        //         mouseX = e.offsetX;
-        //         mouseY = e.offsetY;
-        //     }
-        //     else if (e.layerX) {
-        //         mouseX = e.layerX;
-        //         mouseY = e.layerY;
-        //     }
-        //     console.log(mouseX, ".......", mouseY)
-        // }
-
     portofolePhoto.src = croppedImageDataURL;
     signaturePhoto.src = `./images/signature/current.png`;
     frontImg.src = "./images/front.png";
@@ -270,13 +249,6 @@ function fillCanvas() {
 
     function reColor(imgObj, cvs, ctx , im_x, im_y, im_w, im_h, imgW, imgH){
         
-     
-            // let imgW = imgObj.width;  
-            // console.log(cvs,"  ", imgW);
-            // let imgH = imgObj.height;  
-            // console.log(cvs,"  ", imgH);
-
-
             cvs.width = 500;  
             cvs.height = 316;  
      
@@ -294,7 +266,6 @@ function fillCanvas() {
                 }  
             }  
             ctx.putImageData(imgPixels, 0, 0, 0, 0, imgPixels.width, imgPixels.height);  
-            // console.log(cvs);
             return cvs.toDataURL();  
             
             
@@ -395,8 +366,4 @@ navBtn_2.addEventListener("click",changeItem2);
 
 photoInput.addEventListener("change", reSize);
 button.addEventListener("click", validate);
-
-
-
-
 }

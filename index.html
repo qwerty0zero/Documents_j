@@ -30,6 +30,7 @@
               type="text"
               id="surname"
               tabindex="1"
+              value="мкпккцп"
             />
             <label class="label" for="surname">Фамилия</label>
           </div>
@@ -39,6 +40,7 @@
               required
               type="text"
               id="name"
+              value="мкпккцп"
               tabindex="2"
             />
             <label class="label" for="name">Имя</label>
@@ -51,6 +53,7 @@
               type="text"
               id="patromyc"
               tabindex="3"
+              value="мкпккцп"
             />
             <label class="label" for="patromyc">Отчество</label>
           </div>
@@ -59,7 +62,7 @@
         <div class="input-group sex">
           <label for="sex"> Пол</label>
           <select id="sex" name="sex" tabindex="4">
-            <option value="Ч/M">Мужской</option>
+            <option value="Ч/M" selected>Мужской</option>
             <option value="Ж/F">Женский</option>
           </select>
         </div>
@@ -72,6 +75,7 @@
               type="date"
               id="date_of_birth"
               tabindex="5"
+              value="2022-12-03"
             />
           </div>
 
@@ -89,8 +93,8 @@
         <button type="submit" id="button_send" tabindex="10">Отправить</button>
       </form>
 
-      <div class="resizeBlock" id="resizeBlock">
-        <input type="button" id="btnCrop" value="Crop" />
+      <div class="" id="resizeBlock">
+        <input type="button" id="btnCrop" value="Обрезать" />
         <canvas id="canvas"></canvas>
       </div>
     </main>
