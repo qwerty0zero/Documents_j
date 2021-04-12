@@ -289,18 +289,41 @@ function fillCanvas() {
     function fillText(){
         ctx_1.font = " 16px Arial";
         ctx_1.fillStyle = "#000000b3";
+
         ctx_1.fillText(allData[0], 217,85);
         ctx_1.fillText(allData[1], 217,102);
+
         ctx_1.fillText(allData[2], 217,131);
         ctx_1.fillText(allData[3], 217,148);
+
         ctx_1.fillText(allData[4], 217,177);
+
         ctx_1.fillText(allData[5], 217,209);
+
         ctx_1.fillText("УКРАЇНА/UKR", 348,209);
+
         ctx_1.fillText(allData[6], 217,240);
+
         ctx_1.fillText(allData[7], 348,240);
+
         ctx_1.fillText(allData[8], 217,271);
+
         ctx_1.font = '900 16px Arial';
         ctx_1.fillText(allData[9], 348,271);
+
+        ctx_1.font = "italic 8px Arial";
+        ctx_1.fillText("Призвище/ Surname", 216,67);
+        ctx_1.fillText("Ім'я/ Name", 216,113);
+        ctx_1.fillText("По батькові/ Partonymic", 216,159);
+        ctx_1.fillText("Стать/ Sex", 216,191);
+        ctx_1.fillText("Громодянство/ Nationality", 347,191);
+        ctx_1.fillText("Дата народження/ Date of birth", 216,222);
+        ctx_1.fillText("Запис №/ Record No.", 347,222);
+        ctx_1.fillText("Дійсний до/ Date of expiry", 216,253);
+        ctx_1.fillText("Документ №/ Document No.", 347,253);
+
+        cvs_2.style.letterSpacing = "1px";
+
 
         ctx_2.font = " 16px Arial";
         ctx_2.fillStyle = "#000000b3";
@@ -312,16 +335,41 @@ function fillCanvas() {
         ctx_2.font = " 11px Arial";
         ctx_2.fillText("М ДОНЕЦЬК ДОНЕЦЬКА ОБЛАСТЬ УКРАИНА/M DONETSK", 34, 122);
         ctx_2.fillText("DONETTSKA OBLAST UKRAINA/UKR", 34, 135);
+   
+       
+
+
+        ctx_2.font = "10px Arial";
+        ctx_2.fillText("ПАСПОРТ ГРОМОДЯНИНА УКРАЇНИ Є ВЛАСНИСТЮ УКРАЇНИ", 34,20);
+
+        ctx_2.font = " 8px Arial";
+        ctx_2.fillText("ПК«Україна»", 420,20);
+
+        ctx_2.font = "italic 8px Arial";
+
+        ctx_2.fillText("Дата видачі/ Date of issue", 34,40);
+        ctx_2.fillText("РНОКПП/ RNTRC", 34,73);
+        ctx_2.fillText("Місце народження/ Place of birth", 34,107);
+        ctx_2.fillText("Орган, що видав/ Authority", 257, 40);
+
+
         ctx_2.font = " 8px Arial";
         ctx_2.textAlign = 'center';
         ctx_2.fillText(allData[0] + " " + allData[2] + " " + allData[1] + " " + allData[3] + " " + allData[7], 250, 185);
 
+
+        cvs_2.style.letterSpacing = "3px";
         ctx_2.font = "100 20px Arial";
-        ctx_2.textAlign = 'center';
-        ctx_2.scale(1.3, 1)
-        ctx_2.fillText(str_1, 192,235, 340);
-        ctx_2.fillText(str_2, 192,255, 340);
-        ctx_2.fillText(str_3, 192,275, 340);
+
+        ctx_2.fillText(str_1, 250,235, 430);
+        ctx_2.fillText(str_2, 250,255, 430);
+        ctx_2.fillText(str_3, 250,275, 430);
+
+
+
+
+
+
 
         cvs_1.style.display = "block";
         cvs_2.style.display = "block";
