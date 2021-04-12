@@ -358,12 +358,11 @@ function fillCanvas() {
         ctx_2.fillText(allData[0] + " " + allData[2] + " " + allData[1] + " " + allData[3] + " " + allData[7], 250, 185);
 
 
-        cvs_2.style.letterSpacing = "3px";
-        ctx_2.font = "100 20px Arial";
+        ctx_2.font = "300 20px Arial";
 
-        ctx_2.fillText(str_1, 250,235, 430);
-        ctx_2.fillText(str_2, 250,255, 430);
-        ctx_2.fillText(str_3, 250,275, 430);
+        ctx_2.fillText(str_1, 250,235, 360);
+        ctx_2.fillText(str_2, 250,255, 360);
+        ctx_2.fillText(str_3, 250,275, 360);
 
 
 
