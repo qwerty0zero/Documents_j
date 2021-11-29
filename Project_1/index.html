@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Studio</title>
+    <link rel="stylesheet" href="./Style/main.css">
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
+  />
+    <link rel="icon" href="./images/svg/logo.svg">
+    <!-- <link rel="icon" href="./images/svg/logo.ico" type="image/svg+xml"> -->
+    <link rel="stylesheet" href="./Style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./Style/anim.css">
+
+
+</head>
+<body>
+    <header class="header_scroll_active">
+        <div class="logo_div">
+            <img src="./images/svg/logo.svg" alt="" id="logo">
+        </div>
+        <div class="buttons_block ">
+
+        </div>
+        <nav>
+            <a class="anim"  href="#home" >
+                <p>HOME</p>
+            </a>
+            <a class="anim"  href="#about_us">
+                <p>ABOUT</p>
+            </a>
+            <a class="anim"  href="#services">
+                <p>SERVICES</p>
+            </a>
+            <a class="anim"  href="#products">
+                <p>PRODUCTS</p>
+            </a>
+            <a class="anim"  href="#work_process">
+                <p>PROCESS</p>
+            </a>
+            <a class="anim"  href="#our_clients">
+                <p>OUR CLIENTS</p>
+            </a>
+            <a class="anim"  href="#contacts">
+                <p>CONTACTS</p>
+            </a>
+        </nav>
+
+    </header>
+    <main id="home">
+        <div class="main_div">
+            <img src="./images/png/1.png" class="anim" alt="">
+            <div class="text_block">
+                <h1>We Design and Develop</h1>
+                <p class="anim" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur incidunt repudiandae molestias eaque aut temporibus illum autem atque quia nulla provident rerum est alias necessitatibus, eveniet, ullam, enim rem eos.</p>
+            <a href="#contacts" class="btn fifth">Contact Us</a>
+    
+        </div>
+        
+        </div>
+    </div>
+    </main>
+    <section id="about_us">
+        <div class="text_block">
+            <h2  class="anim" >About Us</h2>
+            <p class="anim" >Lorem  ipsum dolor sit amet consectetur, adipisicing elit. Recusandae laudantium, dignissimos voluptas delectus, ex illo ullam deserunt suscipit exercitationem odio amet quo nostrum. Sapiente ipsa, quas ratione ab quae at?</p>
+            <img class="anim"  src="./images/svg/signature.svg" alt="" id="signature">
+        </div>
+    </section>
+    <section id="professional_skills">
+    <h2  class="anim" >Professionals Skills</h2>
+    <ul id="professionals_ul">
+        <li>
+            <div>
+                <p class="anim" >ui/ux design</p>
+                <p class="procent">75</p>
+            </div>
+            <div class="line_body">
+                <div class="line anim"></div>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p class="anim" >web development</p>
+                <p class="procent">90</p>
+            </div>
+            <div class="line_body">
+                <div class="line anim"></div>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p class="anim" >marketing</p>
+                <p class="procent">65</p>
+            </div>
+            <div class="line_body">
+                <div class="line anim"></div>
+            </div>
+        </li>
+
+    </ul>    
+    <img src="./images/png/2.png" class="anim" alt="">
+    </section>
+    <section id="services">
+        <div class="services_div anim">
+            <img src="./images/svg/luggage.svg" alt="">
+            <div class="text_block">
+                <p class="services_num">548</p>
+                <p class="services_text">projects completed</p>
+            </div>
+        </div>
+        <div class="services_div anim">
+            <img src="./images/svg/clock.svg" alt="">
+            <div class="text_block">
+                <p class="services_num anim ">1465</p>
+                <p class="services_text">working hours</p>
+            </div>
+        </div>
+        <div class="services_div anim">
+            <img src="./images/svg/marks.svg" alt="">
+            <div class="text_block">
+                <p class="services_num anim">612</p>
+                <p class="services_text">positive feedback</p>
+            </div>
+        </div>
+        <div class="services_div anim">
+            <img src="./images/svg/hearth.svg" alt="">
+            <div class="text_block">
+                <p class="services_num anim">735</p>
+                <p class="services_text">happy clients</p>
+            </div>
+        </div>
+        <img src="./images/png/3.png" class="anim" alt="">
+    </section>
+    <section id="prodЫucts">
+        <div class="product" v-for="product in Products">
+            <img v-bind:src="'./images/products/product_' + product.num + '.jpg'" alt="">
+            <div class="product_text_block">
+                <p class="name">{{ product.name }}</p>
+                <p class="price">{{ product.price }}</p>
+                <p class="description"> {{product.description}} </p>
+            </div>
+        </div>
+            <a href="#" class="view_more">View More</a>
+
+    </section>
+    <section id="work_process">
+        <h2  class="anim" >Our Work Process</h2>
+        <p class="anim" >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore officia deserunt quos, laborum blanditiis nisi iure sint est iusto, debitis magnam, quod sapiente. Veritatis, exercitationem vel fugit quidem at debitis?</p>
+        <img class="anim"  src="./images/jpg/work_place.jpg" alt="">
+    </section>
+    <section id="more_services">
+        <div class="column anim">
+            <img src="./images/svg/ux.svg" alt="">
+            <div class="text_block">
+                <h3>ux / ui design</h3>
+                <p> adipisicing elit. Eligendi  ntglntnn nrtint</p>
+            </div>
+        </div>
+        <div class="column anim">
+            <img src="./images/svg/web.svg" alt="">
+            <div class="text_block">
+                <h3>web development</h3>
+                <p> adipisicing elit. Eligendi  ntglntnn nrtint</p>
+            </div>
+        </div>
+        <div class="column anim">
+            <img src="./images/svg/app.svg" alt="">
+            <div class="text_block">
+                <h3>app / mobile</h3>
+                <p> adipisicing elit. Eligendi  ntglntnn nrtint</p>
+            </div>
+        </div>
+        <div class="column anim">
+            <img src="./images/svg/game.svg" alt="">
+            <div class="text_block">
+                <h3>game design</h3>
+                <p> adipisicing elit. Eligendi  ntglntnn nrtint</p>
+            </div>
+        </div>
+        <div class="column anim">
+            <img src="./images/svg/seo.svg" alt="">
+            <div class="text_block">
+                <h3>seo / marketimg</h3>
+                <p> adipisicing elit. Eligendi  ntglntnn nrtint</p>
+            </div>
+        </div>
+        <div class="column anim">
+            <img src="./images/svg/photo.svg" alt="">
+            <div class="text_block">
+                <h3>photography</h3>
+                <p> adipisicing elit. Eligendi  ntglntnn nrtint</p>
+            </div>
+        </div>
+        <div class="column anim">
+            <img src="./images/svg/graphics.svg" alt="">
+            <div class="text_block">
+                <h3>graphic design</h3>
+                <p> adipisicing elit. Eligendi  ntglntnn nrtint</p>
+            </div>
+        </div>
+        <div class="column anim">
+            <img src="./images/svg/ilustrations.svg" alt="">
+            <div class="text_block">
+                <h3>ilustrations</h3>
+                <p> adipisicing elit. Eligendi  ntglntnn nrtint</p>
+            </div>
+        </div>
+    </section>
+    <section id="slider_section">
+        <div class="slider_track swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut, odio est nemo corrupti tempora doloremque totam sunt, consequuntur, velit rerum voluptate dolorem deserunt modi consectetur tenetur qui nihil nobis. Cupiditate?</p>
+                    <p>Ihor Kuhel</p>
+                </div>
+                <div class="swiper-slide">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut, odio est nemo corrupti tempora doloremque totam sunt, consequuntur, velit rerum voluptate dolorem deserunt modi consectetur tenetur qui nihil nobis. Cupiditate?</p>
+                    <p>Ihor Kuhel</p>
+                </div>
+                <div class="swiper-slide">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut, odio est nemo corrupti tempora doloremque totam sunt, consequuntur, velit rerum voluptate dolorem deserunt modi consectetur tenetur qui nihil nobis. Cupiditate?</p>
+                    <p>Ihor Kuhel</p>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+    </section>
+    <section id="our_clients">
+        <ul class="clients">
+            <li class="anim" ><a href=""><img src="./images/companys/Adobe_Corporate_logo.svg" alt=""></a></li>
+            <li class="anim" ><a href=""><img src="./images/companys/Sony_logo.svg" alt=""></a></li>
+            <li class="anim" ><a href=""><img src="./images/companys/Microsoft_logo.svg" alt=""></a></li>
+            <li class="anim" ><a href=""><img src="./images/companys/Oracle_logo.svg" alt=""></a></li>
+        </ul>
+    </section>
+    <section id="section_forms">
+        <h2>Need a New Project?</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem voluptas facere delectus ipsum alias omnis provident quisquam officia minus. Eligendi, amet</p>
+        <form action="GET">
+            <div class="form_group">
+                <input class="anim" type="text" placeholder="Your name">
+                <input class="anim"  type="email"  placeholder="Your email">
+            </div>
+            <input class="anim"  type="text"  placeholder="Your title">
+            <textarea class="anim"   placeholder="Your comment"
+             cols="15" rows="10"></textarea>
+        </form>
+    </section>
+    <footer id="contacts" class="anim">
+        <div class="f_text_block">
+            <h3 >Ihor Kuhel Design Inc.</h3>
+            <p> jev vnprenv nvrn knvrlkn mkrv</p>
+        </div>
+        <div class="contacts">
+            <a class="anim_n " href="mailto:igoricloud98@gmail.com">igoricloud98@gmail.com</a>
+            <a class="anim_n "  href="tel:+380951182842">+380951182842</a>
+        </div>
+        <ul class="u_links">
+            <li>
+                <ul class="group">
+                    <li class="links"><a href="" class="group link">Project</a></li>
+                    <li class="links"><a href="" class="group link">About</a></li>
+                    <li class="links"><a href="" class="group link">Services</a></li>
+                    <li class="links"><a href="" class="group link">Carreer</a></li>
+                </ul>
+            </li>
+           
+            <li>
+                <ul class="group">
+                    <li class="links"><a href="" class="group link">News</a></li>
+                    <li class="links"><a href="" class="group link">Events</a></li>
+                    <li class="links"><a href="" class="group link">Contacts</a></li>
+                    <li class="links"><a href="" class="group link">Legals</a></li>
+                </ul>
+            </li>
+           
+            <li>
+                <ul class="group">
+                    <li class="links"><a href="" class="group link">Facebook</a></li>
+                    <li class="links"><a href="" class="group link">Twitter</a></li>
+                    <li class="links"><a href="" class="group link">Instagram</a></li>
+                    <li class="links"><a href="" class="group link">Dribbble</a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </footer>
+    <div id="shadow"></div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-scrollto"></script>
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/animation.js"></script>
+
+
+
+</body>
+</html>

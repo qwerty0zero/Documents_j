@@ -1,96 +1,22 @@
 <!DOCTYPE html>
-<html lang="ua">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./styles/style.css" />
-    <link rel="stylesheet" href="./styles/cropper.css" />
-  </head>
-  <body>
-    <nav>
-      <div class="">
-        <div id="nav_item-1" class="nav_block active">
-          <div class="nav_item"></div>
-        </div>
-
-        <div id="nav_item-2" class="nav_block">
-          <div class="nav_item"></div>
-        </div>
-      </div>
-    </nav>
-
-    <main id="main" class="active">
-      <form id="form" action="" onsubmit=";return false">
-        <div class="input-group">
-          <div class="input_div">
-            <input
-              class="input"
-              required
-              type="text"
-              id="surname"
-              tabindex="1"
-            />
-            <label class="label" for="surname">Фамилия</label>
-          </div>
-          <div class="input_div">
-            <input class="input" required type="text" id="name" tabindex="2" />
-            <label class="label" for="name">Имя</label>
-          </div>
-
-          <div class="input_div">
-            <input
-              class="input"
-              required
-              type="text"
-              id="patromyc"
-              tabindex="3"
-            />
-            <label class="label" for="patromyc">Отчество</label>
-          </div>
-        </div>
-
-        <div class="input-group sex">
-          <label for="sex"> Пол</label>
-          <select id="sex" name="sex" tabindex="4">
-            <option value="Ч/M">Мужской</option>
-            <option value="Ж/F">Женский</option>
-          </select>
-        </div>
-
-        <div class="input-group date">
-          <div class="input_div">
-            <label for="date_of_birth">Дата рожения</label>
-            <input required type="date" id="date_of_birth" tabindex="5" />
-          </div>
-
-          <div class="input_div">
-            <label for="photo_send">Загрузите фото</label>
-            <input
-              type="file"
-              name="photo_send"
-              id="photo_send"
-              accept="image/jpeg,image/png,image/gif"
-              tabindex="6"
-            />
-          </div>
-        </div>
-        <button type="submit" id="button_send" tabindex="10">Отправить</button>
-      </form>
-
-      <div class="" id="resizeBlock">
-        <input type="button" id="btnCrop" value="Обрезать" />
-        <canvas id="canvas"></canvas>
-      </div>
-    </main>
-
-    <div id="canvasItem">
-      <canvas width="500" height="316" id="canvas_1"></canvas>
-      <canvas width="500" height="316" id="canvas_2"></canvas>
-    </div>
-
-    <script src="./scripts/jquery-3.6.0.min.js"></script>
-    <script src="./scripts/cropper.js"></script>
-    <script src="./scripts/script_2.js"></script>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./Project_list/css/ico.svg">
+    <title>My projects</title>
+    <link rel="stylesheet" href="./Project_1/Style/main.css">
+    <link rel="stylesheet" href="./Project_list/css/style.css">
+</head>
+<body>
+    <section>
+        <ul>
+            <li><a href="./Project_1/index.html">Project_1</a></li>
+            <li><a href="#">Project_2</a></li>
+            <li><a href="#">Project_3</a></li>
+            <li><a href="#">Project_4</a></li>
+        </ul>
+    </section>
+</body>
 </html>
